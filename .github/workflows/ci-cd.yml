@@ -8,8 +8,13 @@ on:
   workflow_dispatch:
 
 jobs:
+  # GitHub Actions JS actions Node20 deprecation mitigation
+  # (forces actions/checkout, setup-node, setup-python to run on Node 24 runtime)
+  # See GitHub changelog notice in CI logs.
   backend-quality:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -33,6 +38,8 @@ jobs:
 
   frontend-quality:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -40,7 +47,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "24"
           cache: "npm"
           cache-dependency-path: frontend/package-lock.json
 

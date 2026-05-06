@@ -1,5 +1,5 @@
 // services/authService.ts
-import { User, AuthResponse, LoginData } from '../types/auth';
+import { User, AuthResponse } from '../types/auth';
 import { getRefreshTokenCookie } from '../utils/authCookies';
 import { getApiBase } from '../config/apiBase';
 

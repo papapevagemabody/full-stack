@@ -6,11 +6,11 @@ import os
 url = "https://raw.githubusercontent.com/opencv/opencv/master/data/haarcascades/haarcascade_frontalface_default.xml"
 filename = "haarcascade_frontalface_default.xml"
 
-print(f"📥 Скачиваю каскад с GitHub...")
+print("📥 Скачиваю каскад с GitHub...")
 urllib.request.urlretrieve(url, filename)
 
 if os.path.exists(filename):
     print(f"✅ Файл скачан: {filename}")
-    print(f"📁 Разместите его в папке с вашим скриптом")
+    print("📁 Разместите его в папке с вашим скриптом")
 else:
     print("❌ Не удалось скачать файл")

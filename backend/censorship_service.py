@@ -1,8 +1,6 @@
 # censorship_service.py
 import cv2
-import numpy as np
-import os
-from typing import Optional, Tuple
+from typing import Optional
 from face_detection import face_detector
 
 class CensorshipService:

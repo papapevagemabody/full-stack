@@ -11,7 +11,6 @@ const RegisterForm: React.FC = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
   const [registrationStep, setRegistrationStep] = useState<'form' | 'success' | 'error'>('form');
   
   const { register } = useAuth();
@@ -20,7 +19,6 @@ const RegisterForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
-    setSuccess(false);
 
     // Валидация
     if (password !== confirmPassword) {
@@ -46,7 +44,6 @@ const RegisterForm: React.FC = () => {
       // Используем метод register из AuthContext
       await register({ username, email: email || undefined, password });
       
-      setSuccess(true);
       setRegistrationStep('success');
       
       console.log('✅ Регистрация успешна!');

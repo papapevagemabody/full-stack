@@ -1,16 +1,14 @@
 # user_service.py
 from typing import Optional, Dict, List
-from sqlalchemy.orm import Session
 from database import get_db_context
 from models import User
 from rbac_service import rbac_service
 import secrets
 import string
-from datetime import datetime
 
 class UserService:
     def __init__(self):
-        print(f"✅ UserService initialized with PostgreSQL")
+        print("✅ UserService initialized with PostgreSQL")
     
     def user_exists(self, username: str) -> bool:
         """Проверяет существование пользователя"""
@@ -129,7 +127,7 @@ class UserService:
             user = db.query(User).filter(
                 User.username == username,
                 User.password_hash == password_hash,
-                User.is_active == True
+                User.is_active
             ).first()
             
             if user:

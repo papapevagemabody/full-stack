@@ -20,7 +20,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return getAccessTokenCookie();
   });
   const [isLoading, setIsLoading] = useState(true);
-  const [userMinioInfo, setUserMinioInfo] = useState<any>(null);
+  // Сохраняем в state, чтобы при необходимости расширить UI (сейчас не используется напрямую)
+  const [, setUserMinioInfo] = useState<any>(null);
 
   useEffect(() => {
     const offAccess = apiService.subscribeAccessToken((t) => setToken(t));

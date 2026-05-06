@@ -6,10 +6,8 @@ from fastapi import HTTPException, status, Depends
 from fastapi.security import OAuth2PasswordBearer
 import hashlib
 
-from schemas import User, UserCreate
+from schemas import User
 from user_service import user_service
-from database import get_db_context
-from models import User as UserModel
 from rbac_service import rbac_service
 from config import settings
 
@@ -53,7 +51,6 @@ def authenticate_user(username: str, password: str) -> Optional[User]:
         return None
     
     stored_hash = user_data["password_hash"]
-    input_hash = get_password_hash(password)
     
     password_match = verify_password(password, stored_hash)
     
@@ -270,7 +267,7 @@ def initialize_demo_users():
             if "role" in user_data:
                 try:
                     rbac_service.assign_role_to_user(user_data["username"], user_data["role"])
-                except:
+                except Exception:
                     pass
             print(f"✅ Demo user already exists: {user_data['username']}")
 

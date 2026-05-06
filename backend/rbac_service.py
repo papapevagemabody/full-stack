@@ -1,8 +1,7 @@
 # rbac_service.py
-from typing import Optional, List, Dict
-from sqlalchemy.orm import Session
+from typing import List, Dict
 from database import get_db_context
-from models import Role, Permission, User, user_roles, role_permissions
+from models import Role, Permission, User
 
 class RBACService:
     """Сервис для управления ролями и разрешениями"""

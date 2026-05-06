@@ -6,7 +6,6 @@ from typing import List, Tuple
 from schemas import Detection
 import random
 import urllib.request
-import zipfile
 
 class FaceDetector:
     def __init__(self):
@@ -54,7 +53,7 @@ class FaceDetector:
                             loaded += 1
                             print(f"  ✓ Найден в OpenCV: {name}")
                             continue
-            except:
+            except Exception:
                 pass
             
             # Пробуем скачать
@@ -136,7 +135,7 @@ class FaceDetector:
         cascade = cv2.CascadeClassifier(cascade_path)
         if not cascade.empty():
             self.cascades['simple_face'] = cascade
-            print(f"  ✓ Создан простой каскад")
+            print("  ✓ Создан простой каскад")
         else:
             print("  ❌ Не удалось создать каскад")
     

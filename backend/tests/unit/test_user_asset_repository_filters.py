@@ -1,7 +1,6 @@
 """Лаб. №5: модульный тест репозитория на изолированной SQLite (без запуска всего app)."""
 from __future__ import annotations
 
-from datetime import date
 
 import pytest
 from sqlalchemy import create_engine

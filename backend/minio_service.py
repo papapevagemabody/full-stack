@@ -5,7 +5,7 @@ from config import settings
 import io
 import os
 from pathlib import Path
-from typing import Optional, Tuple
+from typing import Tuple
 from datetime import timedelta
 from urllib.parse import quote
 import secrets
@@ -257,7 +257,7 @@ class MinioService:
         # В реальном MinIO нужно использовать Admin API
         print(f"✅ MinIO policy configured for user: {username}")
         print(f"   - Can access: {self.bucket}/{username}/*")
-        print(f"   - Cannot access other users' files")
+        print("   - Cannot access other users' files")
 
 # Создаем экземпляр сервиса
 minio_service = MinioService()

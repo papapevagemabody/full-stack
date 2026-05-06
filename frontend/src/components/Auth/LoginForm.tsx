@@ -19,7 +19,7 @@ const LoginForm: React.FC = () => {
 
     try {
       console.log(`🔄 Login attempt: ${username}`);
-      const user = await login(username, password);
+      await login(username, password);
       console.log('✅ Login successful, redirecting...');
       
       // Перенаправляем на главную страницу

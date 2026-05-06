@@ -21,7 +21,7 @@ interface Role {
 }
 
 const UserManagement: React.FC = () => {
-  const { isAdmin, hasPermission } = usePermissions();
+  const { isAdmin } = usePermissions();
   const [users, setUsers] = useState<User[]>([]);
   const [roles, setRoles] = useState<Role[]>([]);
   const [loading, setLoading] = useState(true);

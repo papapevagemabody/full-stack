@@ -10,5 +10,3 @@ export interface FileData {
   detections: Detection[];
   redactions: any[];
 }
-
-export default {};

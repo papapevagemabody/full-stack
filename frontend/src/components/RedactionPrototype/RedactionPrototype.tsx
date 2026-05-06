@@ -209,16 +209,7 @@ export default function RedactionPrototype() {
     }
   };
 
-  const handleParamChange = (paramName: string, value: any) => {
-    setCensorshipParams(prev => ({
-      ...prev,
-      [paramName]: value
-    }));
-  };
-
-  const getCurrentMethod = () => {
-    return censorshipMethods.find(m => m.id === selectedMethod);
-  };
+  // параметры методов остаются в state; UI под параметры можно добавить позже
 
   return (
     <div className="redaction-container">

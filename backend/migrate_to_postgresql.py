@@ -3,7 +3,6 @@ import json
 from minio import Minio
 from config import settings
 from user_service import user_service
-from auth import get_password_hash
 
 def migrate_from_minio_to_postgresql():
     """Мигрирует пользователей из MinIO в PostgreSQL"""
@@ -54,7 +53,7 @@ def migrate_from_minio_to_postgresql():
                 except Exception as e:
                     print(f"❌ Ошибка при миграции {obj.object_name}: {e}")
         
-        print(f"\n🎉 Миграция завершена!")
+        print("\n🎉 Миграция завершена!")
         print(f"   Успешно мигрировано: {migrated_count}")
         print(f"   Пропущено (уже существует): {skipped_count}")
         

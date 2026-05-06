@@ -6,7 +6,8 @@ from config import settings
 class FileUtils:
     @staticmethod
     def validate_file(file: UploadFile) -> bool:
-        if not file.filename: return False
+        if not file.filename:
+            return False
         file_extension = os.path.splitext(file.filename)[1].lower()
         return file_extension in settings.ALLOWED_EXTENSIONS
     

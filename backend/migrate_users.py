@@ -1,6 +1,5 @@
 from auth import fake_users_db  # Старая база
 from user_service import user_service
-from auth import get_password_hash
 
 def migrate_users():
     """Мигрирует пользователей из памяти в MinIO"""

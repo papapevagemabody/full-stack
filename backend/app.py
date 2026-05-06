@@ -5,10 +5,8 @@ from fastapi.responses import JSONResponse, Response
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.security import OAuth2PasswordRequestForm
-from typing import List, Optional
+from typing import List
 import os
-import uuid
-import random
 from contextlib import asynccontextmanager
 from censorship_service import censorship_service
 
@@ -363,7 +361,7 @@ async def get_file(object_name: str):
         object_name = unquote(object_name)
         
         # Проверяем что путь содержит username (базовая проверка безопасности)
-        if not "/" in object_name:
+        if "/" not in object_name:
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
                 detail="Invalid file path"
@@ -466,7 +464,7 @@ async def debug_system_status():
     
     try:
         users = user_service.get_all_users()
-    except:
+    except Exception:
         users = []
     
     return {
