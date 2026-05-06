@@ -45,8 +45,6 @@ services:
       dockerfile: Dockerfile
     container_name: fs-backend
     restart: unless-stopped
-    env_file:
-      - ./backend/.env
     environment:
       USE_SQLITE: "0"
       POSTGRES_HOST: postgres
