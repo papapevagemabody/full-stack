@@ -1,0 +1,9 @@
+node_modules
+build
+coverage
+.cache
+.env
+npm-debug.log*
+yarn-error.log*
+Dockerfile*
+docker-compose*.yml

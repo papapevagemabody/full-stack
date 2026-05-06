@@ -1,0 +1,402 @@
+/* Header.css */
+.header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 9999; /* ОЧЕНЬ высокий z-index */
+  width: 100%;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  border-bottom: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+.header-container {
+  width: 100%;
+  max-width: 1800px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+/* Логотип */
+.header-logo {
+  flex: 0 0 auto;
+  text-decoration: none;
+  z-index: 10000;
+  position: relative;
+}
+
+.logo-text {
+  font-size: 2.5rem !important; /* УВЕЛИЧЕНО */
+  font-weight: 900;
+  color: white;
+  padding: 0.8rem 2rem !important; /* УВЕЛИЧЕНО */
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.logo-text:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Основная навигация */
+.header-nav {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  margin-left: 3rem;
+}
+
+/* Центральный блок - ОЧЕНЬ большие кнопки */
+.center-nav-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+  flex: 1;
+  height: 100%;
+  position: relative;
+  z-index: 9998;
+}
+
+.mega-link {
+  text-decoration: none;
+  padding: 2rem 4rem !important; /* УВЕЛИЧЕНО */
+  font-size: 2.5rem !important; /* УВЕЛИЧЕНО */
+  font-weight: 900 !important;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  background: rgba(255, 255, 255, 0.25);
+  border: 5px solid rgba(255, 255, 255, 0.35);
+  transition: all 0.3s ease;
+  min-width: 320px; /* УВЕЛИЧЕНО */
+  justify-content: center;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 9998;
+}
+
+.mega-link .nav-icon {
+  font-size: 3.5rem !important; /* УВЕЛИЧЕНО */
+}
+
+.mega-link .nav-text {
+  font-size: 2.8rem !important; /* УВЕЛИЧЕНО */
+  letter-spacing: 1.5px;
+  font-weight: 900;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.mega-link:hover {
+  background: rgba(255, 255, 255, 0.35);
+  border-color: rgba(255, 255, 255, 0.45);
+  transform: translateY(-5px) scale(1.08);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+}
+
+.mega-link.active {
+  background: rgba(255, 255, 255, 0.4);
+  border-color: #ffd700;
+  box-shadow: 
+    0 12px 30px rgba(0, 0, 0, 0.4),
+    inset 0 0 25px rgba(255, 255, 255, 0.3);
+}
+
+/* Правый блок - мелкие элементы */
+.right-nav-section {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  flex: 0 0 auto;
+  position: relative;
+  z-index: 9998;
+}
+
+/* Обычные ссылки - УВЕЛИЧЕНЫ */
+.nav-link {
+  text-decoration: none;
+  color: white;
+  padding: 1.2rem 2rem !important; /* УВЕЛИЧЕНО */
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.6rem !important; /* УВЕЛИЧЕНО */
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.15);
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  min-width: 150px;
+  justify-content: center;
+}
+
+.nav-link .nav-icon {
+  font-size: 2rem !important; /* УВЕЛИЧЕНО */
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.nav-link.active {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+/* Блок пользователя - УВЕЛИЧЕН */
+.user-section {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding-left: 2rem;
+  border-left: 4px solid rgba(255, 255, 255, 0.25);
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1rem 1.8rem;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 15px;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  font-size: 1.4rem;
+}
+
+.user-icon {
+  font-size: 2.2rem !important; /* УВЕЛИЧЕНО */
+}
+
+.username {
+  font-weight: 700;
+  font-size: 1.6rem !important; /* УВЕЛИЧЕНО */
+}
+
+.admin-badge {
+  background: linear-gradient(45deg, #ffd700, #ffaa00);
+  color: #000;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 1.2rem;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.user-buttons {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.user-button {
+  padding: 1.2rem 2.5rem !important; /* УВЕЛИЧЕНО */
+  border: none;
+  border-radius: 15px;
+  font-weight: 700;
+  font-size: 1.5rem !important; /* УВЕЛИЧЕНО */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 140px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.profile-btn {
+  background: linear-gradient(135deg, #48bb78, #38a169);
+  color: white;
+  border: 3px solid rgba(255, 255, 255, 0.25);
+}
+
+.profile-btn:hover {
+  background: linear-gradient(135deg, #38a169, #2f855a);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.logout-btn {
+  background: linear-gradient(135deg, #f56565, #e53e3e);
+  color: white;
+  border: 3px solid rgba(255, 255, 255, 0.25);
+}
+
+.logout-btn:hover {
+  background: linear-gradient(135deg, #e53e3e, #c53030);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Ссылки авторизации */
+.auth-links {
+  display: flex;
+  gap: 2rem;
+}
+
+/* Адаптивность */
+@media (max-width: 1600px) {
+  .header-nav {
+    margin-left: 2rem;
+  }
+  
+  .center-nav-section {
+    gap: 3rem;
+  }
+  
+  .mega-link {
+    padding: 1.8rem 3.5rem !important;
+    font-size: 2.2rem !important;
+    min-width: 280px;
+  }
+  
+  .mega-link .nav-icon {
+    font-size: 3rem !important;
+  }
+  
+  .mega-link .nav-text {
+    font-size: 2.4rem !important;
+  }
+  
+  .logo-text {
+    font-size: 2.2rem !important;
+  }
+}
+
+@media (max-width: 1400px) {
+  .header {
+    height: 110px;
+    padding: 1rem;
+  }
+  
+  .header-container {
+    flex-direction: column;
+    height: auto;
+    gap: 1.5rem;
+  }
+  
+  .header-nav {
+    width: 100%;
+    margin-left: 0;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .center-nav-section {
+    width: 100%;
+    gap: 2rem;
+  }
+  
+  .right-nav-section {
+    width: 100%;
+    justify-content: center;
+    border-top: 3px solid rgba(255, 255, 255, 0.2);
+    padding-top: 1.5rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .mega-link {
+    padding: 1.5rem 2.5rem !important;
+    font-size: 1.8rem !important;
+    min-width: 220px;
+  }
+  
+  .mega-link .nav-icon {
+    font-size: 2.5rem !important;
+  }
+  
+  .mega-link .nav-text {
+    font-size: 2rem !important;
+  }
+  
+  .nav-link {
+    padding: 1rem 1.5rem !important;
+    font-size: 1.4rem !important;
+  }
+  
+  .user-button {
+    padding: 1rem 2rem !important;
+    font-size: 1.3rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .center-nav-section {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .mega-link {
+    width: 90%;
+    max-width: 350px;
+  }
+  
+  .right-nav-section {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .user-section {
+    flex-direction: column;
+    border-left: none;
+    border-top: 3px solid rgba(255, 255, 255, 0.2);
+    padding-left: 0;
+    padding-top: 1.5rem;
+    width: 100%;
+  }
+  
+  .user-info {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .user-buttons {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .auth-links {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+body {
+  padding-top: 100px !important; /* Компенсируем высоту fixed хедера */
+}
+
+/* Принудительно перекрываем все возможные стили */
+* {
+  box-sizing: border-box;
+}
+
+/* Убедимся, что хедер поверх всего */
+header, .header, div[class*="header"] {
+  z-index: 10000 !important;
+  position: relative !important;
+}

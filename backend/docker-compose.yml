@@ -1,0 +1,111 @@
+version: '3.8'
+
+services:
+  # PostgreSQL база данных
+  postgres:
+    image: postgres:15-alpine
+    container_name: image-redaction-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: image_redaction_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password123
+      # Убираем trust, используем нормальную аутентификацию
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-scripts:/docker-entrypoint-initdb.d  # Директория, а не файл
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    networks:
+      - app-network
+
+  # MinIO для хранения файлов
+  minio:
+    image: minio/minio:latest
+    container_name: image-redaction-minio
+    restart: unless-stopped
+    command: server /data --console-address ":9001"
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: admin
+      MINIO_ROOT_PASSWORD: password123
+    volumes:
+      - minio_data:/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+    networks:
+      - app-network
+
+  # Ваше FastAPI приложение
+  app:
+    build: .
+    container_name: image-redaction-app
+    restart: unless-stopped
+    ports:
+      - "8001:8001"
+    environment:
+      # PostgreSQL настройки
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: image_redaction_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password123
+      
+      # MinIO настройки
+      MINIO_ENDPOINT: minio:9000
+      MINIO_ACCESS_KEY: admin
+      MINIO_SECRET_KEY: password123
+      MINIO_SECURE: "false"
+      MINIO_BUCKET: user-files
+      
+      # Настройки приложения
+      DEBUG: "true"
+      HOST: "0.0.0.0"
+      PORT: "8001"
+    volumes:
+      - ./uploads:/app/uploads
+      - ./static:/app/static
+      - .:/app  # Монтируем весь код
+    depends_on:
+      postgres:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+    networks:
+      - app-network
+
+  # pgAdmin для управления PostgreSQL (опционально)
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: image-redaction-pgadmin
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+    driver: local
+  minio_data:
+    driver: local

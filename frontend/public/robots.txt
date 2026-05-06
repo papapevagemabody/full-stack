@@ -1,0 +1,14 @@
+# Статическая копия для CRA (dev/build). Полная политика и Sitemap — на backend GET /robots.txt
+User-agent: *
+Allow: /
+
+Disallow: /redaction
+Disallow: /profile
+Disallow: /catalog
+Disallow: /admin/
+Disallow: /login
+Disallow: /register
+Disallow: /status
+
+# Укажите абсолютный URL sitemap после деплоя, например:
+# Sitemap: https://your-domain.example/sitemap.xml
