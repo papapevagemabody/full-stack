@@ -6,7 +6,6 @@ import {
   UploadResponse, 
   FileInfo, 
   CensorshipResponse,
-  CensorshipMethod,
   MinioInfo,
   Detection
 } from "../../services/api";
@@ -30,9 +29,8 @@ export default function RedactionPrototype() {
   const [error, setError] = useState<string | null>(null);
   const [userFiles, setUserFiles] = useState<FileInfo[]>([]);
   const [minioInfo, setMinioInfo] = useState<MinioInfo | null>(null);
-  const [censorshipMethods, setCensorshipMethods] = useState<CensorshipMethod[]>([]);
   const [selectedMethod, setSelectedMethod] = useState<string>('pixelate');
-  const [censorshipParams, setCensorshipParams] = useState<Record<string, any>>({
+  const [censorshipParams] = useState<Record<string, any>>({
     pixel_size: 15,
     blur_strength: 31
   });
@@ -67,13 +65,11 @@ export default function RedactionPrototype() {
   const loadCensorshipMethods = async () => {
     try {
       const methods = await apiService.getCensorshipMethods();
-      setCensorshipMethods(methods);
       if (methods.length > 0) {
         setSelectedMethod(methods[0].id);
       }
     } catch (error) {
       console.error('Error loading censorship methods:', error);
-      setCensorshipMethods([]);
     }
   };
 
